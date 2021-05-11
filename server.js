@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db')
 // Routes files
 const bootcamps = require('./routes/bootcamps');
@@ -20,6 +21,9 @@ app.use(express.json());
 
 // Mount routes
 app.use('/api/v1/bootcamps', bootcamps);
+
+// since error handler is a middleware, it is declared in the entry file server.js and  placed after the routers is declares
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
