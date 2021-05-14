@@ -12,6 +12,7 @@ dotenv.config({
 
 // Routes files
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 
 
 // Connect to database
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // Mount routes
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 // since error handler is a middleware, it is declared in the entry file server.js and  placed after the routers is declares
 app.use(errorHandler);
